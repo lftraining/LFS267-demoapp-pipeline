@@ -97,7 +97,7 @@ pipeline {
     GO111MODULE = 'auto'
     CGO_ENABLED = 0
     GOPATH = "${JENKINS_HOME}/jobs/${JOB_NAME}/builds/${BUILD_ID}"
-    PKG_PATH = '/home/jenkins/pkgs'
+    PKG_PATH = '/usr/bin/'
   }
   options {
     buildDiscarder(logRotator(numToKeepStr: '3'))
