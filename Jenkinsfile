@@ -4,7 +4,7 @@ pipeline {
     stage('Pre-build') {
       agent {
         node {
-          label 'master'
+          label 'jdk21'
         }
       }
       environment {
@@ -12,7 +12,7 @@ pipeline {
       }
       steps {
         echo 'Installing dependencies'
-        sh 'go get -u golang.org/x/lint/golint'
+        sh 'go install golang.org/x/lint/golint@latest'
       }
     }
     stage('Build') {
@@ -51,7 +51,7 @@ pipeline {
     stage('Test') {
       agent {
         node {
-          label 'master'
+          label 'jdk21'
         }
       }
       steps {
