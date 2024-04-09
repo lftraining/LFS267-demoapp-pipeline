@@ -1,11 +1,10 @@
-
 pipeline {
   agent none
   stages {
     stage('Pre-build') {
       agent {
         node {
-          label 'jdk17'
+          label 'jdk21'
         }
       }
       environment {
@@ -19,10 +18,10 @@ pipeline {
     stage('Build') {
       failFast true
       parallel {
-        stage('Build-1') {
+        stage('Build1.21.8') {
           agent {
             node {
-              label 'jdk17'
+              label 'go-1.21.8'
             }
           }
           
@@ -37,10 +36,10 @@ pipeline {
             }
           }
         }
-        stage('Build2') {
+        stage('Build1.16') {
           agent {
             node {
-              label 'jdk21'
+              label 'go-1.21.8'
             }
           }
           steps {
@@ -52,7 +51,7 @@ pipeline {
     stage('Test') {
       agent {
         node {
-          label 'jdk17'
+          label 'jdk21'
         }
       }
       steps {
