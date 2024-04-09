@@ -18,7 +18,7 @@ pipeline {
     stage('Build') {
       failFast true
       parallel {
-        stage('Build1.21.8') {
+        stage('Build-1') {
           agent {
             node {
               label 'go-1.21.8'
@@ -36,10 +36,10 @@ pipeline {
             }
           }
         }
-        stage('Build1.16') {
+        stage('Build-2') {
           agent {
             node {
-              label 'go-1.21.8'
+              label 'go-1.22.2'
             }
           }
           steps {
